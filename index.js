@@ -24,7 +24,7 @@ app.set('view engine', 'html')
 
 
 //socket
-io.origins(['*'])
+io.set('origins','*:*');
 io.on('connection', socket=>{
     console.log("Socket conectado: +"+socket.id);
     socket.on('textoMod', data=>{
