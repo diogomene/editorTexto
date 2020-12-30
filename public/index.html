@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Editor</title>
 </head>
 <body>
     <div class="textCont">
@@ -19,7 +19,7 @@
         let state;
         socket.on('newText',(nt)=>{$("#texto").val(nt); state=false;}); //*
 
-        setInterval(()=>{last=perceive(last)},1);
+        setInterval(()=>{last=perceive(last)},0);
 
         function perceive(lastOne){
 
