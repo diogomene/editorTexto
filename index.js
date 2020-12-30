@@ -2,25 +2,17 @@
 const express = require('express');
 const app= express();
 const server = require('http').createServer(app);
-const helmet = require('helmet');
-app.use(helmet({
-	contentSecurityPolicy: {
-		directives: {
-			defaultSrc: ["'self'","https: 'unsafe-inline'"],
-			objectSrc: ["'none'"],
-			scriptSrc: ["'self'", "https: 'unsafe-inline'"],
-			styleSrc: ["'self'", "https: 'unsafe-inline'"],
-			upgradeInsecureRequests: [],
-		},
-	},
-}));
 
-app.use(helmet.cors({
-    allowFrom: '*', // or '*' to allow from anyone
-    credentials: 'basic',
-    maxAge: 86400000,
-    // ...
-  }))
+app.all('*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    next();
+  });
 
 porta = process.env.PORT || 3000;
 const io = require('socket.io')(server);
