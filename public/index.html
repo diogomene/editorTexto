@@ -19,7 +19,7 @@
         let state;
         socket.on('newText',(nt)=>{$("#texto").val(nt); state=false;}); //*
 
-        setInterval(()=>{last=perceive(last)},0);
+        setInterval(()=>{last=perceive(last)},1);
 
         function perceive(lastOne){
 
