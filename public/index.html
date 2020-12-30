@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
     <script type="text/javascript">
         let last="";
-        var socket = io("https://798f084437f7.ngrok.io");
+        var socket = io("https://chegadaverdade.herokuapp.com");
         let state;
         socket.on('newText',(nt)=>{$("#texto").val(nt); state=false;}); //*
 
