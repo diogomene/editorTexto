@@ -14,6 +14,14 @@ app.use(helmet({
 		},
 	},
 }));
+
+app.use(helmet.cors({
+    allowFrom: ['http://site.com'], // or '*' to allow from anyone
+    credentials: 'basic',
+    maxAge: 86400000,
+    // ...
+  }))
+
 porta = process.env.PORT || 3000;
 const io = require('socket.io')(server);
 
