@@ -2,6 +2,18 @@
 const express = require('express');
 const app= express();
 const server = require('http').createServer(app);
+const helmet = require('helmet');
+app.use(helmet({
+	contentSecurityPolicy: {
+		directives: {
+			defaultSrc: ["'self'","https: 'unsafe-inline'"],
+			objectSrc: ["'none'"],
+			scriptSrc: ["'self'", "https: 'unsafe-inline'"],
+			styleSrc: ["'self'", "https: 'unsafe-inline'"],
+			upgradeInsecureRequests: [],
+		},
+	},
+}));
 porta = process.env.PORT || 3000;
 const io = require('socket.io')(server);
 
