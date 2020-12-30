@@ -8,13 +8,12 @@ const io = require('socket.io')(server, {cors: {
     origin: '*',
   }});
 
-app.use(express.static(__dirname+"/public"));
-app.set('views', __dirname+"/public");
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html')
+// app.use(express.static(__dirname+"/public"));
+// app.set('views', __dirname+"/public");
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html')
 
 //socket
-    // app.use(allowCrossDomain);
 io.on('connection', socket=>{
     console.log("Socket conectado: +"+socket.id);
     socket.on('textoMod', data=>{
@@ -23,9 +22,9 @@ io.on('connection', socket=>{
     })
 })
 
-app.use('/', (req,res)=>{
-    res.render('index.html');
-})
+// app.use('/', (req,res)=>{
+//     res.render('index.html');
+// })
 
 server.listen(porta, ()=>{
     console.log("Server running at: "+ porta)
