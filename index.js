@@ -3,7 +3,7 @@ const express = require('express');
 const app= express();
 const server = require('http').createServer(app);
 
-// app.all('*', function(req, res, next) {
+//   app.all('*', function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', '*');
 //     res.header('Access-Control-Allow-Credentials', 'true');
 //     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
@@ -24,7 +24,7 @@ app.set('view engine', 'html')
 
 
 //socket
-io.set('origins','*:*');
+app.set('origins','*:*')
 io.on('connection', socket=>{
     console.log("Socket conectado: +"+socket.id);
     socket.on('textoMod', data=>{
@@ -33,10 +33,10 @@ io.on('connection', socket=>{
     })
 })
 
-
 app.use('/', (req,res)=>{
     res.render('index.html');
 })
+
 server.listen(porta, ()=>{
     console.log("Server running at: "+ porta)
 })
